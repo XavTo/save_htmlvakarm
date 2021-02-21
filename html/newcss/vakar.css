@@ -1,0 +1,198 @@
+*
+{
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: normal;
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: 20px;
+}
+body {
+    background-color: rgb(49, 49, 49);
+    margin-left: 10%;
+    margin-right: 3.2%;
+}
+.login {
+    text-decoration: none;
+    color: rgb(0, 174, 255);
+    width: 200px;
+    font-size: 30px;
+    margin-left: 7%;
+    margin-right: 0%;
+}
+.deco {
+    margin-left: 1.5%;
+}
+h1 {
+    font-size: 40px;
+    text-shadow: 1px 1px 2px rgb(2, 0, 36);
+}
+a {
+    text-decoration: none;
+}
+.testphp {
+    color: red;
+}
+.valuephp {
+    color: white;
+}
+#conteneur {
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    max-width: 1480px;
+    border: 3px rgb(61, 61, 61) inset;
+    border-radius: 30px / 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-right: 0;
+    box-shadow: 2px 1px 1px rgb(0, 153, 255);
+}
+.menu {
+    background-color: rgb(0, 217, 255);
+    border: 3px rgb(24, 23, 41) inset;
+    border-radius: 10px / 5px;
+    margin-left: 0px;
+    width: 91%;
+}
+.formulaire {
+    text-decoration: none;
+    margin-left: 1%;
+}
+.createaccount {
+    margin-left: 15%;
+}
+.validaccount {
+    border: 1px dotted #999;
+    border-radius: 5px / 3px;
+    height: 23px;
+    width: 160px;
+    margin-left: 10px;
+    font-size: 15px;
+}
+.myvalid {
+    border: 1px dotted #999;
+    border-radius: 5px / 3px;
+    height: 23px;
+    width: 60px;
+    margin-left: 10px;
+    font-size: 15px;
+}
+label {
+    color: rgb(0, 174, 255);
+}
+.enterpseudo {
+    border: 1px dotted #999;
+    border-radius: 5px / 3px;
+    height: 15px;
+    width: 135px;
+    margin-left: 10px;
+    font-size: 16px;
+}
+.enterpassword {
+    border: 1px dotted #999;
+    border-radius: 5px / 3px;
+    height: 15px;
+    width: 135px;
+    margin-left: 10px;
+    font-size: 16px;
+}
+.labelpassword {
+    margin-left: 10px;
+}
+form {
+    display:inline;
+}
+.titlevakarm {
+    font-size: 80px;
+    text-shadow: 1px 1px 10px rgb(0, 174, 255);
+}
+.namematch {
+    background-color: rgb(0, 217, 255);
+    text-align: left;
+    margin-left: 0;
+    box-shadow: 3px 3px 3px rgb(17, 0, 255);
+}
+.boxmatch {
+    color: lightblue;
+    border: 1px white inset;
+    margin-left: -30px;
+    text-align: right;
+    box-shadow: 1px 1px 4px rgb(0, 107, 207);
+}
+.hours {
+    color: rgb(226, 106, 106);
+    margin-right: 70px;
+}
+.date {
+    color: rgb(226, 106, 106);
+}
+.csmatch {
+    background-color: rgb(29, 29, 29);
+    width: 300px;
+    text-align: right;
+    box-shadow: 8px 8px 8px rgb(0, 0, 0);
+    margin-left: 0;
+}
+.vs {
+    background-color: rgb(12, 12, 12);
+}
+.article {
+    background-color: rgb(253, 237, 237);
+    border: 3px rgb(129, 129, 129) inset;
+    border-radius: 10px / 5px;
+    width: 50%;
+}
+.namearticle {
+    background-color: rgb(0, 217, 255);
+    text-shadow: 1px 1px 10px rgb(255, 255, 255);
+    text-align: left;
+    margin-left: 0;
+    box-shadow: 3px 3px 3px rgb(17, 0, 255);
+}
+.listarticle {
+    border: 3px rgb(58, 58, 58) inset;
+    border-radius: 10px / 5px;
+    margin-left: 0;
+}
+.namecompet {
+    background-color: rgb(0, 217, 255);
+    text-align: left;
+    margin-left: 0;
+    box-shadow: 3px 3px 3px rgb(17, 0, 255);
+}
+.competition {
+    background-color: rgb(29, 29, 29);
+    width: 300px;
+    box-shadow: 8px 8px 8px rgb(0, 0, 0);
+}
+.listcompet {
+    margin-left: 0;
+    color: lightblue;
+    border: 1px white inset;
+    box-shadow: 1px 1px 4px rgb(0, 107, 207);
+}
+
+.jackz {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    box-shadow: 8px 8px 8px rgb(0, 0, 0);
+}
+.otherlink {
+    margin-top: 15px;
+}
+.photo {
+    margin-right: -35px;
+}
+.shphoto {
+    box-shadow: 3px 3px 3px rgb(0, 0, 0);
+}
+a:visited{
+    color: blue;
+}
+a:hover{
+    color: green;
+}
+.titlevakarm{
+    color :rgb(224, 224, 224)
+}
