@@ -8,9 +8,9 @@
     <body>
         <header><h1 class="First_title">
             <?php
-                if (isset($_GET['nom']) && isset($_GET['prenom'])) {
-                    if (ctype_alpha($_GET['nom']) == false) echo "error name";
-                    else echo "bonjour " . $_GET['nom'] . " ". $_GET['prenom'];
+                if (isset($_GET['nom'])) {
+                    if (ctype_alpha($_GET['nom']) == false) echo "error name or no login";
+                    else echo "bonjour " . $_GET['nom'];
                 }
                 else header('Location: error.php');
             ?>

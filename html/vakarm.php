@@ -9,9 +9,10 @@ session_start();
         <link rel="stylesheet" href="newcss/vakar.css"/>
     </head>
     <body>
-        <?php include("login_manager.php"); ?>
+        <?php include("login_manager.php");?>
         <header>
-            <h1><a class="linkvakarm" href="my_first.php" target="_blank"><span class="titlevakarm">Vakarm</span></a> 
+            <h1><a
+                class="linkvakarm" href='<?php echo "my_first.php?nom="; echo $_SESSION['pseudo']; ?>' <span></span><span class="titlevakarm">Vakarm</span></a> 
                 des news qui font du bruit
             </h1>
             <nav class="menu">

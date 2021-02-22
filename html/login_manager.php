@@ -1,46 +1,36 @@
 <?php
     function my_getpseudo($str)
     {
-        $value = 0;
         $index = 0;
-        $new = 0;
-        $monfichier = fopen('save.txt', 'r+');
-        $ligne = fgets($monfichier);
-        fclose($monfichier);
-        while (isset($ligne[$new])) {
-            while (isset($str[$index]) && $ligne[$new] != '%') {
-                if ($ligne[$new] != $str[$index])
-                    $value++;
-                $index++; $new++;
-            }
-            while ($ligne[$new] != '|')
-                $new++;
-            $new++;
-            if ($value == 0)
-                return (0);
-            $value = 0; $index = 0;
+        $bdd = new PDO('mysql:host=localhost;dbname=users', 'root', '');
+        $pass = $bdd->query('SELECT pseudo FROM login ORDER BY id');
+        while ($donnees = $pass->fetch()) {
+            $stockarray[$index] = $donnees['pseudo'];
+            $index++;
+        }
+        $index = 0;
+        while (isset($stockarray[$index])) {
+            if ($str == $stockarray[$index])
+                return(0);
+            $index++;
         }
         return (1);
     }
     function my_getpass($str)
     {
-        $str = hash("ripemd160", $str, $binary = false);
-        $value = 0; $index = 0; $new = 0;
-        $monfichier = fopen('save.txt', 'r+');
-        $ligne = fgets($monfichier);
-        fclose($monfichier);
-        while ($ligne[$new] != '%') $new++;
-        $new++;
-        while (isset($ligne[$new])) {
-            while (isset($str[$index]) && $ligne[$new] != '|') {
-                if ($ligne[$new] != $str[$index]) $value++;
-                $index++; $new++;
-            }
-            if ($ligne[$new] != '|' || isset($str[$index])) $value++;
-            while (isset($ligne[$new]) && $ligne[$new] != '%') $new++;
-            $new++;
-            if ($value == 0) return (0);
-            $value = 0; $index = 0;
+        $newstr = hash("ripemd160", $str, $binary = false);
+        $index = 0;
+        $bdd = new PDO('mysql:host=localhost;dbname=users', 'root', '');
+        $pass = $bdd->query('SELECT password FROM login ORDER BY id');
+        while ($donnees = $pass->fetch()) {
+            $stockarray[$index] = $donnees['password'];
+            $index++;
+        }
+        $index = 0;
+        while (isset($stockarray[$index])) {
+            if ($newstr == $stockarray[$index])
+                return(0);
+            $index++;
         }
         return (1);
     }
@@ -49,22 +39,19 @@
         $value = 0;
         $new = 0;
         $index = 0;
-        $monfichier = fopen('save.txt', 'r+');
-        $ligne = fgets($monfichier);
-        fclose($monfichier);
-        while (isset($str[$index])) {
-            while (isset($str[$index]) && $ligne[$new] != '%') {
-                if ($ligne[$new] != $str[$index])
-                    $value++;
-                $index++; $new++;
-            }
-            while ($ligne[$new] != '|')
-                $new++;
-            $new++;
-            if ($value == 0)
-                return (1);
-            $value = 0; $index = 0;
+        $bdd = new PDO('mysql:host=localhost;dbname=users', 'root', '');
+        $pass = $bdd->query('SELECT pseudo FROM login ORDER BY id');
+        while ($donnees = $pass->fetch()) {
+            $stockarray[$index] = $donnees['pseudo'];
+            $index++;
         }
+        $index = 0;
+        while (isset($stockarray[$index])) {
+            if ($str == $stockarray[$index])
+                return(1);
+            $index++;
+        }
+        return (0);
     }
 ?>
 <?php
@@ -104,18 +91,16 @@
         }
     }
     if (isset($_POST['newpseudo']) && isset($_POST['newpassword'])) {
-        if (strlen($_POST['newpseudo']) < 2 || strlen($_POST['newpassword'] < 1))
-            echo '<span class="loginerr">error</span>';
-        else if (strlen($_POST['newpassword']) < 6)
-            echo '<span class="loginerr"password to small</span>';
-        else if (my_checksame($_POST['newpseudo']) == 1)
-            echo '<span class="loginerr"Pseudo already taken</span>';
+        if (strlen($_POST['newpseudo']) < 2 || strlen($_POST['newpassword']) < 4 || my_checksame($_POST['newpseudo']) == 1) {
+            if (my_checksame($_POST['newpseudo']) == 1) echo '<span class=erroruser">username already taken </span>';
+            else echo '<span class=erroruser">password or username too small </span>';
+        }
         else {
-            $monfichier = fopen('save.txt', 'r+');
-            $ligne = fgets($monfichier);
-            fputs($monfichier, $_POST['newpseudo']."%".hash("ripemd160", $_POST['newpassword'], $binary = false)."|");
-            fclose($monfichier);
-            header("Refresh:0");
+            $bdd = new PDO('mysql:host=localhost;dbname=users', 'root', '');
+            $ret = $bdd->prepare('INSERT INTO login(pseudo, password) VALUES (:pseudo, :password)');
+            $ret->bindValue(':pseudo', $_POST['newpseudo'], PDO::PARAM_STR);
+            $ret->bindValue(':password', hash("ripemd160", $_POST['newpassword'], $binary = false), PDO::PARAM_STR);
+            $ret->execute();
         }
     }
     if (isset($_POST['deco'])) {
